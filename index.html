@@ -190,7 +190,7 @@
     <!-- Label row - clearly above the track -->
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
       <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.55)">
-        Overall TP Release Completion — <span id="trackDone" style="color:#e63000">703</span> of <span id="trackTotal" style="color:rgba(255,255,255,0.8)">1143</span> tickets done
+        P0/P1 Bug Overall TP Release Completion — <span id="trackDone" style="color:#e63000">80</span> of <span id="trackTotal" style="color:rgba(255,255,255,0.8)">123</span> tickets done
       </div>
       <div style="font-size:11px;font-weight:800;color:#e63000;letter-spacing:1px">62%</div>
     </div>
@@ -498,8 +498,8 @@ const now = new Date();
 document.getElementById('ts-date').textContent = now.toLocaleDateString('en-US', {weekday:'long',month:'long',day:'numeric',year:'numeric'});
 document.getElementById('ts-time').textContent = now.toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'});
 
-// F1 Race track — DS 2.0 TP completion 703/1143
-const DONE = 703, TOTAL = 1143;
+// F1 Race track — DS 2.0 TP P0/P1 Bug completion 80/123
+const DONE = 80, TOTAL = 123;
 const pct = Math.round(DONE / TOTAL * 100);
 // Track road runs from left:24px to right:36px within the container
 // Car travels within that range as a percentage
