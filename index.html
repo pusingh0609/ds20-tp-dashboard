@@ -61,8 +61,8 @@
   /* ═══ RACE TRACK ═══ */
   .track-section{background:#0e1014;padding:24px 48px 28px;border-bottom:1px solid var(--border)}
   .track-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-  .track-title{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:3px;text-transform:uppercase}
-  .track-pct{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:800;color:var(--f1red);letter-spacing:1px}
+  .track-title{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:3px;text-transform:uppercase}
+  .track-pct{font-family:'Orbitron',sans-serif;font-size:16px;font-weight:800;color:var(--f1red);letter-spacing:1px}
   .track-wrap{position:relative;height:44px}
   .track-road{position:absolute;top:50%;left:28px;right:40px;height:16px;transform:translateY(-50%);background:var(--card);border-radius:8px;border:1px solid var(--border);overflow:hidden}
   .track-kerb-inner{position:absolute;top:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--f1red) 0,var(--f1red) 6px,#fff 6px,#fff 12px);opacity:0.3}
@@ -87,9 +87,9 @@
   .page-inner{padding:0 48px}
 
   /* ═══ SECTION HEADERS ═══ */
-  .sec-hdr{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:12px}
+  .sec-hdr{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:12px}
   .sec-hdr::before{content:'';width:3px;height:16px;background:var(--f1red);border-radius:1px;flex-shrink:0}
-  .sec-hdr a{color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0;text-transform:none;font-family:'Inter',sans-serif;font-size:11px;margin-left:auto}
+  .sec-hdr a{color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0;text-transform:none;font-family:'Inter',sans-serif;font-size:13px;margin-left:auto}
 
   /* ═══ TIMING TOWER CARDS ═══ */
   .timing-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:40px}
@@ -104,18 +104,18 @@
   .timing-card.t-amber::before{background:var(--amber)}
   .timing-card.t-green{background:var(--green-bg);border-color:var(--green-border)}
   .timing-card.t-green::before{background:var(--green)}
-  .timing-label{font-family:'Orbitron',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+  .timing-label{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
   .timing-card.t-blue .timing-label{color:var(--blue)}
   .timing-card.t-red .timing-label{color:var(--red)}
   .timing-card.t-amber .timing-label{color:var(--amber)}
   .timing-card.t-green .timing-label{color:var(--green)}
-  .timing-num{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;font-style:italic;letter-spacing:-2px;line-height:1}
+  .timing-num{font-family:'Barlow Condensed',sans-serif;font-size:60px;font-weight:900;font-style:italic;letter-spacing:-2px;line-height:1}
   .timing-card.t-blue .timing-num{color:var(--blue)}
   .timing-card.t-red .timing-num{color:var(--red)}
   .timing-card.t-amber .timing-num{color:var(--amber)}
   .timing-card.t-green .timing-num{color:var(--green)}
-  .timing-sub{font-size:11px;color:var(--muted);margin-top:6px;font-weight:500}
-  .timing-link{display:inline-block;margin-top:10px;font-size:10px;color:var(--cyan);text-decoration:none;font-weight:600;font-family:'Orbitron',sans-serif;letter-spacing:1px}
+  .timing-sub{font-size:13px;color:var(--muted);margin-top:6px;font-weight:500}
+  .timing-link{display:inline-block;margin-top:10px;font-size:12px;color:var(--cyan);text-decoration:none;font-weight:600;font-family:'Orbitron',sans-serif;letter-spacing:1px}
 
   /* ═══ CONSTRUCTOR STANDINGS (Team Grid) ═══ */
   .constructor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
@@ -126,19 +126,19 @@
   .constructor-card.rag-AMBER .constructor-bar{background:var(--amber)}
   .constructor-card.rag-RED .constructor-bar{background:var(--f1red)}
   .constructor-body{padding:18px 20px 16px}
-  .constructor-pos{font-family:'Orbitron',sans-serif;font-size:9px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
-  .constructor-num{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;font-style:italic;letter-spacing:-2px;line-height:1}
+  .constructor-pos{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  .constructor-num{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;font-style:italic;letter-spacing:-2px;line-height:1}
   .constructor-card.rag-GREEN .constructor-num{color:var(--green)}
   .constructor-card.rag-AMBER .constructor-num{color:var(--amber)}
   .constructor-card.rag-RED .constructor-num{color:var(--f1red)}
-  .constructor-sub{font-size:11px;color:var(--muted);margin-top:6px;font-weight:500}
-  .constructor-link{display:inline-block;margin-top:10px;font-size:10px;color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0.5px}
+  .constructor-sub{font-size:13px;color:var(--muted);margin-top:6px;font-weight:500}
+  .constructor-link{display:inline-block;margin-top:10px;font-size:12px;color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0.5px}
 
   /* ═══ PIT WALL (Hackathon) ═══ */
   .pit-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:40px}
 
   /* ═══ FOOTER ═══ */
-  .f1-footer{font-family:'Orbitron',sans-serif;font-size:9px;color:var(--muted);text-align:center;margin-top:32px;padding:20px 48px;border-top:2px solid var(--border);letter-spacing:1px}
+  .f1-footer{font-family:'Orbitron',sans-serif;font-size:11px;color:var(--muted);text-align:center;margin-top:32px;padding:20px 48px;border-top:2px solid var(--border);letter-spacing:1px}
   .f1-footer a{color:var(--cyan);text-decoration:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:600}
 
   /* ═══ CHECKERED DIVIDER ═══ */
