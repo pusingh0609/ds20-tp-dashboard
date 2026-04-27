@@ -9,7 +9,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#0d0d0d;--card:#151515;--card2:#1a1a1a;--border:#252525;
+    --bg:#141619;--card:#1c1f24;--card2:#22262c;--border:#2e333a;
     --text:#eef0f6;--muted:#6b7280;
     --f1red:#e10600;--f1red-glow:rgba(225,6,0,0.3);
     --green:#00d26a;--green-bg:rgba(0,210,106,0.08);--green-border:rgba(0,210,106,0.25);
@@ -59,12 +59,12 @@
   .f1-kerb-bottom{height:4px;background:repeating-linear-gradient(90deg,var(--f1red) 0,var(--f1red) 24px,#fff 24px,#fff 48px);opacity:0.6}
 
   /* ═══ RACE TRACK ═══ */
-  .track-section{background:#0a0a0a;padding:24px 48px 28px;border-bottom:1px solid #1a1a1a}
+  .track-section{background:#0e1014;padding:24px 48px 28px;border-bottom:1px solid var(--border)}
   .track-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
   .track-title{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:3px;text-transform:uppercase}
   .track-pct{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:800;color:var(--f1red);letter-spacing:1px}
   .track-wrap{position:relative;height:44px}
-  .track-road{position:absolute;top:50%;left:28px;right:40px;height:16px;transform:translateY(-50%);background:#1a1a1a;border-radius:8px;border:1px solid #2a2a2a;overflow:hidden}
+  .track-road{position:absolute;top:50%;left:28px;right:40px;height:16px;transform:translateY(-50%);background:var(--card);border-radius:8px;border:1px solid var(--border);overflow:hidden}
   .track-kerb-inner{position:absolute;top:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--f1red) 0,var(--f1red) 6px,#fff 6px,#fff 12px);opacity:0.3}
   .track-kerb-inner-b{position:absolute;bottom:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,#fff 0,#fff 6px,var(--f1red) 6px,var(--f1red) 12px);opacity:0.3}
   .track-drs{position:absolute;top:-1px;bottom:-1px;left:60%;width:15%;background:rgba(0,210,106,0.06);border-left:1px dashed rgba(0,210,106,0.3);border-right:1px dashed rgba(0,210,106,0.3)}
@@ -142,7 +142,7 @@
   .f1-footer a{color:var(--cyan);text-decoration:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:600}
 
   /* ═══ CHECKERED DIVIDER ═══ */
-  .checkered-div{height:8px;background:repeating-conic-gradient(#1a1a1a 0% 25%, #111 0% 50%) 0 0/8px 8px;margin:0}
+  .checkered-div{height:8px;background:repeating-conic-gradient(var(--card) 0% 25%, var(--bg) 0% 50%) 0 0/8px 8px;margin:0}
 </style>
 </head>
 <body>
