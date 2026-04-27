@@ -4,454 +4,487 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="refresh" content="60">
-<title>DS 2.0 Tech Preview — Overall Release Status</title>
+<title>DS 2.0 GRAND PRIX — Race to Tech Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:ital,wght@0,700;0,900;1,700;1,900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#0a0a0a;--card:#111111;--border:#1e2438;
-    --text:#eef0f6;--muted:#7a839b;
-    --green:#34d399;--green-bg:rgba(52,211,153,0.08);--green-border:rgba(52,211,153,0.2);
-    --amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--amber-border:rgba(251,191,36,0.2);
-    --red:#f87171;--red-bg:rgba(248,113,113,0.08);--red-border:rgba(248,113,113,0.2);
-    --blue:#60a5fa;--blue-bg:rgba(96,165,250,0.08);--blue-border:rgba(96,165,250,0.2);
-    --cyan:#22d3ee;--purple:#a78bfa;
+    --bg:#0d0d0d;--card:#151515;--card2:#1a1a1a;--border:#252525;
+    --text:#eef0f6;--muted:#6b7280;
+    --f1red:#e10600;--f1red-glow:rgba(225,6,0,0.3);
+    --green:#00d26a;--green-bg:rgba(0,210,106,0.08);--green-border:rgba(0,210,106,0.25);
+    --amber:#fbbf24;--amber-bg:rgba(251,191,36,0.08);--amber-border:rgba(251,191,36,0.25);
+    --red:#e10600;--red-bg:rgba(225,6,0,0.08);--red-border:rgba(225,6,0,0.25);
+    --blue:#3b82f6;--blue-bg:rgba(59,130,246,0.08);--blue-border:rgba(59,130,246,0.25);
+    --cyan:#06b6d4;--purple:#8b5cf6;
+    --carbon:url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M0 0h3v3H0zM3 3h3v3H3z'/%3E%3C/g%3E%3C/svg%3E");
   }
-  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
-  .page{max-width:1280px;margin:0 auto;padding:0 0 80px}
+  body{background:var(--bg);background-image:var(--carbon);color:var(--text);font-family:'Inter',system-ui,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+  .page{max-width:1320px;margin:0 auto;padding:0 0 60px}
 
-  /* Racing hero header */
-  .race-hero{position:relative;background:#000;overflow:hidden;padding:48px 48px 40px;margin-bottom:0}
-  .race-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e63000,#ff4500,#e63000)}
-  .race-stripes{position:absolute;top:0;right:0;bottom:0;width:40%;background:repeating-linear-gradient(170deg,transparent,transparent 18px,rgba(230,48,0,0.07) 18px,rgba(230,48,0,0.07) 19px);pointer-events:none}
-  .race-glow{position:absolute;top:-60px;left:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(230,48,0,0.15) 0%,transparent 70%);pointer-events:none}
-  .race-hero-inner{position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
-  .race-title-block{}
-  .race-awc{font-family:'Barlow Condensed',sans-serif;font-size:120px;font-weight:900;font-style:italic;line-height:0.85;color:#e63000;letter-spacing:-4px;text-transform:uppercase;text-shadow:0 0 60px rgba(230,48,0,0.4)}
-  .race-sub{font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;font-style:italic;color:#e63000;letter-spacing:-2px;text-transform:uppercase;margin-top:-8px;line-height:0.85;text-shadow:0 0 60px rgba(230,48,0,0.4)}
-  .race-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-  .race-days-block{text-align:right}
-  .race-days-num{font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;font-style:italic;color:#e63000;letter-spacing:-3px;line-height:1}
-  .race-days-label{font-size:12px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:3px;margin-top:-4px}
-  .race-meta{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.8;text-align:right}
-  .race-meta strong{color:rgba(255,255,255,0.7)}
-  .live-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border:1px solid rgba(52,211,153,0.4);border-radius:20px;background:rgba(52,211,153,0.08);font-size:11px;font-weight:700;color:#34d399}
-  .live-dot{width:6px;height:6px;border-radius:50%;background:#34d399;animation:pulse 2s infinite}
+  /* ═══ F1 HERO HEADER ═══ */
+  .f1-hero{position:relative;background:#000;overflow:hidden;padding:0}
+  .f1-hero-bg{position:absolute;inset:0;background:
+    linear-gradient(135deg,rgba(225,6,0,0.12) 0%,transparent 40%),
+    linear-gradient(315deg,rgba(225,6,0,0.06) 0%,transparent 50%),
+    repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,0.01) 120px,rgba(255,255,255,0.01) 121px);
+    pointer-events:none}
+  .f1-kerb-top{height:6px;background:repeating-linear-gradient(90deg,var(--f1red) 0,var(--f1red) 24px,#fff 24px,#fff 48px);opacity:0.9}
+
+  .f1-hero-inner{position:relative;padding:40px 48px 36px;display:flex;justify-content:space-between;align-items:stretch;gap:32px}
+
+  .f1-title-block{flex:1}
+  .f1-circuit{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,0.35);letter-spacing:4px;text-transform:uppercase;margin-bottom:8px}
+  .f1-gp-name{font-family:'Barlow Condensed',sans-serif;font-size:90px;font-weight:900;font-style:italic;line-height:0.88;color:#fff;letter-spacing:-2px;text-transform:uppercase}
+  .f1-gp-name span{color:var(--f1red);display:block;font-size:72px;letter-spacing:-1px}
+  .f1-date-row{display:flex;align-items:center;gap:16px;margin-top:14px}
+  .f1-date-pill{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:var(--f1red);letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border:1px solid rgba(225,6,0,0.4);border-radius:4px;background:rgba(225,6,0,0.06)}
+  .f1-round{font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+
+  .f1-right-panel{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:8px;min-width:280px}
+  .f1-countdown-block{text-align:right}
+  .f1-countdown-num{font-family:'Orbitron',sans-serif;font-size:72px;font-weight:900;color:var(--f1red);line-height:1;text-shadow:0 0 40px var(--f1red-glow)}
+  .f1-countdown-label{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,0.3);letter-spacing:4px;text-transform:uppercase;margin-top:2px}
+  .f1-lights{display:flex;gap:8px;margin-top:12px;justify-content:flex-end}
+  .f1-light{width:20px;height:20px;border-radius:50%;background:#1a1a1a;border:2px solid #333;transition:all 0.3s}
+  .f1-light.on{background:var(--f1red);border-color:var(--f1red);box-shadow:0 0 12px var(--f1red-glow)}
+  .f1-light.go{background:var(--green);border-color:var(--green);box-shadow:0 0 12px rgba(0,210,106,0.5)}
+  .f1-meta{text-align:right;margin-top:auto}
+  .f1-meta-line{font-family:'Orbitron',sans-serif;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px}
+  .f1-meta-line strong{color:rgba(255,255,255,0.6)}
+  .f1-live-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border:1px solid rgba(225,6,0,0.5);border-radius:3px;background:rgba(225,6,0,0.1);font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:var(--f1red);letter-spacing:2px;margin-top:8px}
+  .f1-live-dot{width:6px;height:6px;border-radius:50%;background:var(--f1red);animation:pulse 1.5s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+
+  .f1-kerb-bottom{height:4px;background:repeating-linear-gradient(90deg,var(--f1red) 0,var(--f1red) 24px,#fff 24px,#fff 48px);opacity:0.6}
+
+  /* ═══ RACE TRACK ═══ */
+  .track-section{background:#0a0a0a;padding:24px 48px 28px;border-bottom:1px solid #1a1a1a}
+  .track-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .track-title{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:3px;text-transform:uppercase}
+  .track-pct{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:800;color:var(--f1red);letter-spacing:1px}
+  .track-wrap{position:relative;height:44px}
+  .track-road{position:absolute;top:50%;left:28px;right:40px;height:16px;transform:translateY(-50%);background:#1a1a1a;border-radius:8px;border:1px solid #2a2a2a;overflow:hidden}
+  .track-kerb-inner{position:absolute;top:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--f1red) 0,var(--f1red) 6px,#fff 6px,#fff 12px);opacity:0.3}
+  .track-kerb-inner-b{position:absolute;bottom:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,#fff 0,#fff 6px,var(--f1red) 6px,var(--f1red) 12px);opacity:0.3}
+  .track-drs{position:absolute;top:-1px;bottom:-1px;left:60%;width:15%;background:rgba(0,210,106,0.06);border-left:1px dashed rgba(0,210,106,0.3);border-right:1px dashed rgba(0,210,106,0.3)}
+  .track-drs-label{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-family:'Orbitron',sans-serif;font-size:7px;color:rgba(0,210,106,0.5);letter-spacing:2px}
+  .track-sectors{position:absolute;top:0;bottom:0;display:flex;width:100%}
+  .track-sector{flex:1;border-right:1px solid rgba(255,255,255,0.04)}
+  .track-sector:last-child{border-right:none}
+  .track-fill{position:absolute;top:0;left:0;bottom:0;width:0%;background:linear-gradient(90deg,#8b0000,var(--f1red),#ff2800);border-radius:8px;transition:width 1.6s cubic-bezier(.25,.1,.25,1);box-shadow:0 0 20px var(--f1red-glow)}
+  .track-go{position:absolute;left:0;top:50%;transform:translateY(-50%);font-family:'Orbitron',sans-serif;font-size:8px;font-weight:800;color:rgba(255,255,255,0.4);letter-spacing:2px;width:24px;text-align:center}
+  .track-car{position:absolute;top:50%;transform:translateY(-50%);left:0%;transition:left 1.6s cubic-bezier(.25,.1,.25,1);z-index:10;filter:drop-shadow(0 0 8px rgba(225,6,0,0.6))}
+  .track-flag{position:absolute;right:0;top:50%;transform:translateY(-50%)}
+
+  /* ═══ SECTOR BANNER ═══ */
+  .sector-banner{background:rgba(225,6,0,0.04);border-bottom:1px solid rgba(225,6,0,0.15);padding:12px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .sector-left{display:flex;align-items:center;gap:14px}
+  .sector-dot{width:8px;height:8px;border-radius:50%;background:var(--f1red);animation:pulse 1.5s infinite;flex-shrink:0}
+  .sector-title{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;color:var(--f1red);letter-spacing:2px;text-transform:uppercase}
+  .sector-countdown{font-family:'Orbitron',sans-serif;font-size:10px;color:rgba(225,6,0,0.6);font-weight:700;letter-spacing:1px}
 
   .page-inner{padding:0 48px}
 
-  /* Launch banner now below hero */
-  .launch-banner{background:rgba(230,48,0,0.08);border:1px solid rgba(230,48,0,0.25);border-radius:0 0 14px 14px;padding:12px 48px;margin-bottom:36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  .launch-left{display:flex;align-items:center;gap:14px}
-  .pulse-dot{width:8px;height:8px;border-radius:50%;background:#e63000;animation:pulse 1.5s infinite;flex-shrink:0}
-  .launch-title{font-size:12px;font-weight:700;color:#e63000;text-transform:uppercase;letter-spacing:1.5px}
-  .launch-sub{font-size:10px;color:var(--muted);margin-top:1px}
-  .days-badge{display:none}
-  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+  /* ═══ SECTION HEADERS ═══ */
+  .sec-hdr{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:12px}
+  .sec-hdr::before{content:'';width:3px;height:16px;background:var(--f1red);border-radius:1px;flex-shrink:0}
+  .sec-hdr a{color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0;text-transform:none;font-family:'Inter',sans-serif;font-size:11px;margin-left:auto}
 
-  /* Section headers */
-  .sec-hdr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  /* ═══ TIMING TOWER CARDS ═══ */
+  .timing-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:40px}
+  .timing-card{border-radius:8px;padding:20px 22px;border:1px solid;position:relative;overflow:hidden;text-decoration:none;display:block;transition:transform 0.15s,box-shadow 0.15s}
+  .timing-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+  .timing-card::before{content:'';position:absolute;top:0;left:0;width:4px;bottom:0}
+  .timing-card.t-blue{background:var(--blue-bg);border-color:var(--blue-border)}
+  .timing-card.t-blue::before{background:var(--blue)}
+  .timing-card.t-red{background:var(--red-bg);border-color:var(--red-border)}
+  .timing-card.t-red::before{background:var(--red)}
+  .timing-card.t-amber{background:var(--amber-bg);border-color:var(--amber-border)}
+  .timing-card.t-amber::before{background:var(--amber)}
+  .timing-card.t-green{background:var(--green-bg);border-color:var(--green-border)}
+  .timing-card.t-green::before{background:var(--green)}
+  .timing-label{font-family:'Orbitron',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+  .timing-card.t-blue .timing-label{color:var(--blue)}
+  .timing-card.t-red .timing-label{color:var(--red)}
+  .timing-card.t-amber .timing-label{color:var(--amber)}
+  .timing-card.t-green .timing-label{color:var(--green)}
+  .timing-num{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;font-style:italic;letter-spacing:-2px;line-height:1}
+  .timing-card.t-blue .timing-num{color:var(--blue)}
+  .timing-card.t-red .timing-num{color:var(--red)}
+  .timing-card.t-amber .timing-num{color:var(--amber)}
+  .timing-card.t-green .timing-num{color:var(--green)}
+  .timing-sub{font-size:11px;color:var(--muted);margin-top:6px;font-weight:500}
+  .timing-link{display:inline-block;margin-top:10px;font-size:10px;color:var(--cyan);text-decoration:none;font-weight:600;font-family:'Orbitron',sans-serif;letter-spacing:1px}
 
-  /* RAG summary row */
-  .rag-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
-  .rag-card{border-radius:14px;padding:20px 22px;border:1px solid}
-  .rag-card.green{background:var(--green-bg);border-color:var(--green-border)}
-  .rag-card.amber{background:var(--amber-bg);border-color:var(--amber-border)}
-  .rag-card.red{background:var(--red-bg);border-color:var(--red-border)}
-  .rag-card.blue{background:var(--blue-bg);border-color:var(--blue-border)}
-  .rag-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
-  .rag-card.green .rag-label{color:var(--green)}
-  .rag-card.amber .rag-label{color:var(--amber)}
-  .rag-card.red .rag-label{color:var(--red)}
-  .rag-card.blue .rag-label{color:var(--blue)}
-  .rag-num{font-size:42px;font-weight:900;letter-spacing:-2px;line-height:1}
-  .rag-card.green .rag-num{color:var(--green)}
-  .rag-card.amber .rag-num{color:var(--amber)}
-  .rag-card.red .rag-num{color:var(--red)}
-  .rag-card.blue .rag-num{color:var(--blue)}
-  .rag-sub{font-size:12px;color:var(--muted);margin-top:6px}
-  .rag-link{display:inline-block;margin-top:10px;font-size:11px;color:var(--cyan);text-decoration:none;font-weight:600}
+  /* ═══ CONSTRUCTOR STANDINGS (Team Grid) ═══ */
+  .constructor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
+  .constructor-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:0;position:relative;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.15s,box-shadow 0.15s}
+  .constructor-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+  .constructor-bar{height:4px;width:100%}
+  .constructor-card.rag-GREEN .constructor-bar{background:var(--green)}
+  .constructor-card.rag-AMBER .constructor-bar{background:var(--amber)}
+  .constructor-card.rag-RED .constructor-bar{background:var(--f1red)}
+  .constructor-body{padding:18px 20px 16px}
+  .constructor-pos{font-family:'Orbitron',sans-serif;font-size:9px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  .constructor-num{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;font-style:italic;letter-spacing:-2px;line-height:1}
+  .constructor-card.rag-GREEN .constructor-num{color:var(--green)}
+  .constructor-card.rag-AMBER .constructor-num{color:var(--amber)}
+  .constructor-card.rag-RED .constructor-num{color:var(--f1red)}
+  .constructor-sub{font-size:11px;color:var(--muted);margin-top:6px;font-weight:500}
+  .constructor-link{display:inline-block;margin-top:10px;font-size:10px;color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0.5px}
 
-  /* Team grid */
-  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px}
-  .team-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden}
-  .team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
-  .team-card.rag-GREEN::before{background:var(--green)}
-  .team-card.rag-AMBER::before{background:var(--amber)}
-  .team-card.rag-RED::before{background:var(--red)}
-  .team-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:12px}
-  .team-pct{font-size:36px;font-weight:900;letter-spacing:-1.5px;line-height:1}
-  .team-num{font-size:36px;font-weight:900;letter-spacing:-1.5px;line-height:1}
-  .rag-GREEN .team-pct,.rag-GREEN .team-num{color:var(--green)}
-  .rag-AMBER .team-pct,.rag-AMBER .team-num{color:var(--amber)}
-  .rag-RED .team-pct,.rag-RED .team-num{color:var(--red)}
-  .team-sub{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
-  .team-badges{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
-  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px}
-  .badge-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border)}
-  .badge-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
-  .badge-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
-  .badge-gray{background:rgba(122,131,155,0.1);color:var(--muted);border:1px solid rgba(122,131,155,0.2)}
-  .team-progress{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:12px;overflow:hidden}
-  .team-progress-fill{height:100%;border-radius:2px;transition:width .6s ease}
+  /* ═══ PIT WALL (Hackathon) ═══ */
+  .pit-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:40px}
 
-  /* Section card */
-  .section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 32px;margin-bottom:24px}
-  .section-title-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-  .section-title{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
-  .section-action{font-size:11px;font-weight:600;color:var(--cyan);text-decoration:none;padding:5px 12px;border:1px solid rgba(34,211,238,0.25);border-radius:7px;background:rgba(34,211,238,0.06)}
+  /* ═══ FOOTER ═══ */
+  .f1-footer{font-family:'Orbitron',sans-serif;font-size:9px;color:var(--muted);text-align:center;margin-top:32px;padding:20px 48px;border-top:2px solid var(--border);letter-spacing:1px}
+  .f1-footer a{color:var(--cyan);text-decoration:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:600}
 
-  /* Issue table */
-  .issue-table{width:100%}
-  .issue-row{display:grid;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
-  .issue-row:last-child{border-bottom:none}
-  .issue-row-4{grid-template-columns:90px 1fr 140px 150px}
-  .issue-row-5{grid-template-columns:90px 1fr 80px 140px 150px}
-  .issue-key{font-size:13px;font-weight:700;color:var(--cyan);text-decoration:none}
-  .issue-key:hover{text-decoration:underline}
-  .issue-summary{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .issue-assignee{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .status-pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;text-align:center}
-  .status-Open{background:rgba(248,113,113,.12);color:#f87171;border:1px solid rgba(248,113,113,.25)}
-  .status-InProgress{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.25)}
-  .status-InReview{background:rgba(96,165,250,.12);color:#60a5fa;border:1px solid rgba(96,165,250,.25)}
-  .status-ComponentTest{background:rgba(96,165,250,.12);color:#60a5fa;border:1px solid rgba(96,165,250,.25)}
-  .status-ReadyForDev{background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.2)}
-  .status-RCTest{background:rgba(52,211,153,.12);color:#34d399;border:1px solid rgba(52,211,153,.25)}
-  .status-ReadyForRelease{background:rgba(52,211,153,.12);color:#34d399;border:1px solid rgba(52,211,153,.25)}
-  .priority-p0{background:rgba(248,113,113,.15);color:#f87171;border:1px solid rgba(248,113,113,.3);font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px}
-  .priority-p1{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.25);font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
-
-  /* Taikun special */
-  .taikun-banner{background:linear-gradient(90deg,rgba(167,139,250,0.1),rgba(96,165,250,0.06));border:1px solid rgba(167,139,250,0.3);border-radius:14px;padding:14px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
-  .taikun-label{font-size:12px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px}
-  .taikun-count{font-size:11px;color:var(--muted);margin-top:2px}
-
-  /* Grid 2 */
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
-
-  /* Footer note */
-  .footer{font-size:11px;color:var(--muted);text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid var(--border)}
+  /* ═══ CHECKERED DIVIDER ═══ */
+  .checkered-div{height:8px;background:repeating-conic-gradient(#1a1a1a 0% 25%, #111 0% 50%) 0 0/8px 8px;margin:0}
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- F1 Racing Hero -->
-  <div class="race-hero">
-    <div class="race-glow"></div>
-    <div class="race-stripes"></div>
-    <div class="race-hero-inner">
-      <div class="race-title-block">
-        <div class="race-awc">RACE TO TP</div>
-        <div class="race-sub">04/30</div>
+  <!-- ═══ F1 HERO ═══ -->
+  <div class="f1-hero">
+    <div class="f1-kerb-top"></div>
+    <div class="f1-hero-bg"></div>
+    <div class="f1-hero-inner">
+      <div class="f1-title-block">
+        <div class="f1-circuit">Cloudera Data Services 2.0</div>
+        <div class="f1-gp-name">RACE TO<span>TECH PREVIEW</span></div>
+        <div class="f1-date-row">
+          <div class="f1-date-pill">APR 30 2026</div>
+          <div class="f1-round">Final Sprint</div>
+        </div>
       </div>
-      <div class="race-right">
-        <div class="race-days-block">
-          <div style="display:flex;align-items:center;justify-content:flex-end;gap:12px">
-            <div class="race-days-num" id="daysLeft">7</div>
-            <svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
-              <!-- pole -->
-              <rect x="2" y="0" width="3" height="52" fill="rgba(255,255,255,0.6)" rx="1"/>
-              <!-- checkered flag 4x4 grid -->
-              <rect x="5" y="0"  width="12" height="10" fill="white"/>
-              <rect x="17" y="0" width="12" height="10" fill="black"/>
-              <rect x="29" y="0" width="12" height="10" fill="white"/>
-              <rect x="41" y="0" width="11" height="10" fill="black"/>
-
-              <rect x="5" y="10" width="12" height="10" fill="black"/>
-              <rect x="17" y="10" width="12" height="10" fill="white"/>
-              <rect x="29" y="10" width="12" height="10" fill="black"/>
-              <rect x="41" y="10" width="11" height="10" fill="white"/>
-
-              <rect x="5" y="20" width="12" height="10" fill="white"/>
-              <rect x="17" y="20" width="12" height="10" fill="black"/>
-              <rect x="29" y="20" width="12" height="10" fill="white"/>
-              <rect x="41" y="20" width="11" height="10" fill="black"/>
-
-              <rect x="5" y="30" width="12" height="10" fill="black"/>
-              <rect x="17" y="30" width="12" height="10" fill="white"/>
-              <rect x="29" y="30" width="12" height="10" fill="black"/>
-              <rect x="41" y="30" width="11" height="10" fill="white"/>
-            </svg>
+      <div class="f1-right-panel">
+        <div class="f1-countdown-block">
+          <div class="f1-countdown-num" id="daysLeft">3</div>
+          <div class="f1-countdown-label">Days to Lights Out</div>
+          <div class="f1-lights" id="startLights">
+            <div class="f1-light"></div>
+            <div class="f1-light"></div>
+            <div class="f1-light"></div>
+            <div class="f1-light"></div>
+            <div class="f1-light"></div>
           </div>
-          <div class="race-days-label">Days to Victory</div>
         </div>
-        <div class="race-meta">
-          <div><strong id="ts-date"></strong></div>
-          <div id="ts-time"></div>
+        <div class="f1-meta">
+          <div class="f1-meta-line"><strong id="ts-date"></strong></div>
+          <div class="f1-meta-line" id="ts-time"></div>
+          <div class="f1-live-badge"><div class="f1-live-dot"></div>LIVE TIMING &middot; <span id="countdown">60</span>s</div>
         </div>
-        <div class="live-pill"><div class="live-dot"></div> LIVE &nbsp;·&nbsp; Refreshing in <span id="countdown">60</span>s</div>
       </div>
     </div>
+    <div class="f1-kerb-bottom"></div>
   </div>
 
-  <!-- F1 Race Track Progress -->
-  <div style="background:#0a0a0a;border-top:1px solid #1a1a1a;padding:20px 48px 28px;">
-    <!-- Label row - clearly above the track -->
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.55)">
-        TP Release Completion — <span id="trackDone" style="color:#e63000">96</span> of <span id="trackTotal" style="color:rgba(255,255,255,0.8)">150</span> tickets done
-      </div>
-      <div style="font-size:11px;font-weight:800;color:#e63000;letter-spacing:1px">64%</div>
+  <!-- ═══ RACE TRACK ═══ -->
+  <div class="track-section">
+    <div class="track-header">
+      <div class="track-title">TP Release Completion &mdash; <span style="color:var(--f1red)" id="trackDone">96</span> of <span style="color:rgba(255,255,255,0.7)" id="trackTotal">150</span> P0/P1 tickets done</div>
+      <div class="track-pct" id="trackPct">64%</div>
     </div>
-    <!-- Track -->
-    <div style="position:relative;height:36px;">
-      <!-- Road -->
-      <div style="position:absolute;top:50%;left:24px;right:36px;height:12px;transform:translateY(-50%);background:#1e1e1e;border-radius:6px;border:1px solid #333;overflow:hidden">
-        <!-- dashed centre line -->
-        <div style="position:absolute;top:50%;left:0;right:0;height:1px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,transparent,transparent 18px,rgba(255,255,255,0.12) 18px,rgba(255,255,255,0.12) 32px)"></div>
-        <!-- Progress fill -->
-        <div id="trackFill" style="position:absolute;top:0;left:0;bottom:0;width:0%;background:linear-gradient(90deg,#b32200,#e63000,#ff5500);border-radius:6px;transition:width 1.4s cubic-bezier(.4,0,.2,1)"></div>
+    <div class="track-wrap">
+      <div class="track-road">
+        <div class="track-kerb-inner"></div>
+        <div class="track-kerb-inner-b"></div>
+        <div class="track-sectors">
+          <div class="track-sector"></div>
+          <div class="track-sector"></div>
+          <div class="track-sector"></div>
+        </div>
+        <div class="track-drs"><div class="track-drs-label">DRS</div></div>
+        <div class="track-fill" id="trackFill"></div>
       </div>
-      <!-- AWC start label -->
-      <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:9px;font-weight:800;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;width:20px;text-align:center">GO</div>
-      <!-- F1 Car -->
-      <div id="f1car" style="position:absolute;top:50%;transform:translateY(-50%);left:0%;transition:left 1.4s cubic-bezier(.4,0,.2,1);z-index:10">
-        <svg width="52" height="20" viewBox="0 0 52 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="3" cy="10" rx="4" ry="2.5" fill="#ff6600" opacity="0.8"/>
-          <ellipse cx="1" cy="10" rx="2" ry="1.5" fill="#ffcc00" opacity="0.9"/>
-          <path d="M8 13 L12 7 L34 6 L44 8 L46 10 L44 13 Z" fill="#e63000"/>
-          <path d="M18 7 L22 4 L30 4 L34 6 L18 7Z" fill="#cc2200"/>
-          <path d="M40 11 L48 10 L50 12 L48 13 L40 13Z" fill="#cc2200"/>
-          <path d="M8 8 L6 6 L10 6 L10 8Z" fill="#cc2200"/>
-          <circle cx="14" cy="14" r="4" fill="#222"/>
-          <circle cx="14" cy="14" r="2" fill="#555"/>
-          <circle cx="36" cy="14" r="4" fill="#222"/>
-          <circle cx="36" cy="14" r="2" fill="#555"/>
-          <line x1="2" y1="8" x2="8" y2="8" stroke="#ff6600" stroke-width="1" opacity="0.5"/>
-          <line x1="1" y1="10" x2="7" y2="10" stroke="#ff8800" stroke-width="1" opacity="0.6"/>
-          <line x1="2" y1="12" x2="8" y2="12" stroke="#ff6600" stroke-width="1" opacity="0.5"/>
+      <div class="track-go">GO</div>
+      <div class="track-car" id="f1car">
+        <svg width="56" height="22" viewBox="0 0 56 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="3" cy="11" rx="5" ry="3" fill="#ff4400" opacity="0.7"/>
+          <ellipse cx="1" cy="11" rx="3" ry="2" fill="#ffcc00" opacity="0.8"/>
+          <path d="M8 15 L13 7 L36 6 L47 8 L49 11 L47 15 Z" fill="var(--f1red)"/>
+          <path d="M20 7 L24 3 L32 3 L36 6 L20 7Z" fill="#b30000"/>
+          <path d="M22 4 L28 4" stroke="#fff" stroke-width="0.8" opacity="0.6"/>
+          <path d="M42 12 L51 11 L53 13 L51 15 L42 15Z" fill="#b30000"/>
+          <rect x="47" y="6" width="6" height="2" rx="1" fill="#333"/>
+          <circle cx="15" cy="16" r="4.5" fill="#222" stroke="#444" stroke-width="0.5"/>
+          <circle cx="15" cy="16" r="2.2" fill="#555"/>
+          <circle cx="38" cy="16" r="4.5" fill="#222" stroke="#444" stroke-width="0.5"/>
+          <circle cx="38" cy="16" r="2.2" fill="#555"/>
+          <line x1="1" y1="9" x2="7" y2="9" stroke="#ff6600" stroke-width="1" opacity="0.4"/>
+          <line x1="0" y1="11" x2="7" y2="11" stroke="#ff8800" stroke-width="1.2" opacity="0.5"/>
+          <line x1="1" y1="13" x2="7" y2="13" stroke="#ff6600" stroke-width="1" opacity="0.4"/>
         </svg>
       </div>
-      <!-- Checkered flag finish -->
-      <div style="position:absolute;right:0;top:50%;transform:translateY(-50%)">
-        <svg width="24" height="32" viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="0" width="2" height="32" fill="rgba(255,255,255,0.4)" rx="1"/>
-          <rect x="2" y="0"  width="5" height="5" fill="white"/>
-          <rect x="7" y="0"  width="5" height="5" fill="#333"/>
-          <rect x="12" y="0" width="5" height="5" fill="white"/>
-          <rect x="17" y="0" width="5" height="5" fill="#333"/>
-          <rect x="2" y="5"  width="5" height="5" fill="#333"/>
-          <rect x="7" y="5"  width="5" height="5" fill="white"/>
-          <rect x="12" y="5" width="5" height="5" fill="#333"/>
-          <rect x="17" y="5" width="5" height="5" fill="white"/>
-          <rect x="2" y="10" width="5" height="5" fill="white"/>
-          <rect x="7" y="10" width="5" height="5" fill="#333"/>
-          <rect x="12" y="10" width="5" height="5" fill="white"/>
-          <rect x="17" y="10" width="5" height="5" fill="#333"/>
-          <rect x="2" y="15" width="5" height="5" fill="#333"/>
-          <rect x="7" y="15" width="5" height="5" fill="white"/>
-          <rect x="12" y="15" width="5" height="5" fill="#333"/>
-          <rect x="17" y="15" width="5" height="5" fill="white"/>
+      <div class="track-flag">
+        <svg width="28" height="36" viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="3" height="36" fill="rgba(255,255,255,0.5)" rx="1.5"/>
+          <g transform="translate(3,0)">
+            <rect x="0" y="0"  width="6" height="6" fill="white"/>
+            <rect x="6" y="0"  width="6" height="6" fill="#222"/>
+            <rect x="12" y="0" width="6" height="6" fill="white"/>
+            <rect x="18" y="0" width="6" height="6" fill="#222"/>
+            <rect x="0" y="6"  width="6" height="6" fill="#222"/>
+            <rect x="6" y="6"  width="6" height="6" fill="white"/>
+            <rect x="12" y="6" width="6" height="6" fill="#222"/>
+            <rect x="18" y="6" width="6" height="6" fill="white"/>
+            <rect x="0" y="12" width="6" height="6" fill="white"/>
+            <rect x="6" y="12" width="6" height="6" fill="#222"/>
+            <rect x="12" y="12" width="6" height="6" fill="white"/>
+            <rect x="18" y="12" width="6" height="6" fill="#222"/>
+            <rect x="0" y="18" width="6" height="6" fill="#222"/>
+            <rect x="6" y="18" width="6" height="6" fill="white"/>
+            <rect x="12" y="18" width="6" height="6" fill="#222"/>
+            <rect x="18" y="18" width="6" height="6" fill="white"/>
+          </g>
         </svg>
       </div>
     </div>
   </div>
 
-
-  <div class="launch-banner">
-    <div class="launch-left">
-      <div class="pulse-dot"></div>
-      <div>
-        <div class="launch-title">Tech Preview Launch — April 30, 2026</div>
-      </div>
+  <!-- ═══ SECTOR BANNER ═══ -->
+  <div class="sector-banner">
+    <div class="sector-left">
+      <div class="sector-dot"></div>
+      <div class="sector-title">Race Day &mdash; April 30, 2026</div>
     </div>
-    <div id="daysRemaining" style="font-size:11px;color:rgba(230,48,0,0.7);font-weight:700">7 days remaining</div>
+    <div class="sector-countdown" id="daysRemaining">3 days remaining</div>
   </div>
 
-  <div class="page-inner">
+  <div class="checkered-div"></div>
 
-  <!-- Overall TP Health Status -->
-  <div class="sec-hdr">Overall TP Bug Status <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0;text-transform:none">↗ View in Jira</a></div>
-  <div class="rag-row">
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)" target="_blank" class="rag-card blue" style="text-decoration:none">
-      <div class="rag-label">Total Bugs</div>
-      <div class="rag-num">242</div>
-      <div class="rag-sub">All bugs across all TP labels</div>
-      <div class="rag-link">View in Jira ↗</div>
-    </a>
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20statusCategory%20%3D%20%22To%20Do%22%20AND%20status%20!%3D%20%22Ready%20For%20Dev%22" target="_blank" class="rag-card red" style="text-decoration:none">
-      <div class="rag-label">Open</div>
-      <div class="rag-num">49</div>
-      <div class="rag-sub">20% · To Do / Not Started</div>
-      <div class="rag-link">View in Jira ↗</div>
-    </a>
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20(statusCategory%20%3D%20%22In%20Progress%22%20OR%20status%20%3D%20%22Ready%20For%20Dev%22)" target="_blank" class="rag-card amber" style="text-decoration:none">
-      <div class="rag-label">In Progress</div>
-      <div class="rag-num">32</div>
-      <div class="rag-sub">13% · Actively being worked</div>
-      <div class="rag-link">View in Jira ↗</div>
-    </a>
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)" target="_blank" class="rag-card green" style="text-decoration:none">
-      <div class="rag-label">Closed</div>
-      <div class="rag-num">161</div>
-      <div class="rag-sub">67% · Done / Resolved</div>
-      <div class="rag-link">View in Jira ↗</div>
-    </a>
-  </div>
+  <div class="page-inner" style="margin-top:36px">
 
-  <!-- Overall TP P0/P1 Bug Status -->
-  <div class="sec-hdr">Overall TP P0/P1 Bug Status <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0;text-transform:none">↗ View in Jira</a></div>
-  <div class="rag-row">
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)" target="_blank" class="rag-card blue" style="text-decoration:none">
-      <div class="rag-label">Total P0/P1 Bugs</div>
-      <div class="rag-num">150</div>
-      <div class="rag-sub">P0 + P1 across all TP labels</div>
-      <div class="rag-link">View in Jira ↗</div>
+  <!-- ═══ TIMING TOWER: All Bugs ═══ -->
+  <div class="sec-hdr">Race Telemetry &mdash; All Bugs <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)" target="_blank">View in Jira &#8599;</a></div>
+  <div class="timing-row">
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)" target="_blank" class="timing-card t-blue">
+      <div class="timing-label">Total Bugs</div>
+      <div class="timing-num">242</div>
+      <div class="timing-sub">All bugs across all TP labels</div>
+      <div class="timing-link">View in Jira &#8599;</div>
     </a>
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20statusCategory%20%3D%20%22To%20Do%22%20AND%20status%20!%3D%20%22Ready%20For%20Dev%22" target="_blank" class="rag-card red" style="text-decoration:none">
-      <div class="rag-label">Open</div>
-      <div class="rag-num">28</div>
-      <div class="rag-sub">19% · To Do / Not Started</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20statusCategory%20%3D%20%22To%20Do%22%20AND%20status%20!%3D%20%22Ready%20For%20Dev%22" target="_blank" class="timing-card t-red">
+      <div class="timing-label">Open</div>
+      <div class="timing-num">49</div>
+      <div class="timing-sub">20% &middot; To Do / Not Started</div>
+      <div class="timing-link">View in Jira &#8599;</div>
     </a>
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20(statusCategory%20%3D%20%22In%20Progress%22%20OR%20status%20%3D%20%22Ready%20For%20Dev%22)" target="_blank" class="rag-card amber" style="text-decoration:none">
-      <div class="rag-label">In Progress</div>
-      <div class="rag-num">26</div>
-      <div class="rag-sub">17% · Actively being worked</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20(statusCategory%20%3D%20%22In%20Progress%22%20OR%20status%20%3D%20%22Ready%20For%20Dev%22)" target="_blank" class="timing-card t-amber">
+      <div class="timing-label">In Progress</div>
+      <div class="timing-num">32</div>
+      <div class="timing-sub">13% &middot; Actively being worked</div>
+      <div class="timing-link">View in Jira &#8599;</div>
     </a>
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20status%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)" target="_blank" class="rag-card green" style="text-decoration:none">
-      <div class="rag-label">Closed</div>
-      <div class="rag-num">96</div>
-      <div class="rag-sub">64% · Done / Resolved</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)" target="_blank" class="timing-card t-green">
+      <div class="timing-label">Closed</div>
+      <div class="timing-num">161</div>
+      <div class="timing-sub">67% &middot; Done / Resolved</div>
+      <div class="timing-link">View in Jira &#8599;</div>
     </a>
   </div>
 
-  <!-- Hackathon Week — Bugs Closed & Resolved -->
-  <div class="sec-hdr">Hackathon Week — Bugs Closed &amp; Resolved (since Apr 26) <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20resolved%20%3E%3D%202026-04-26" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:600;letter-spacing:0;text-transform:none">↗ View in Jira</a></div>
-  <div class="rag-row" style="grid-template-columns:repeat(2,1fr)">
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20resolved%20%3E%3D%202026-04-26" target="_blank" class="rag-card green" style="text-decoration:none">
-      <div class="rag-label">Bugs Resolved This Week</div>
-      <div class="rag-num">16</div>
-      <div class="rag-sub">Closed / Resolved since Apr 26</div>
-      <div class="rag-link">View in Jira ↗</div>
+  <!-- ═══ TIMING TOWER: P0/P1 ═══ -->
+  <div class="sec-hdr">Fastest Lap &mdash; P0/P1 Bugs <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)" target="_blank">View in Jira &#8599;</a></div>
+  <div class="timing-row">
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)" target="_blank" class="timing-card t-blue">
+      <div class="timing-label">Total P0/P1</div>
+      <div class="timing-num">150</div>
+      <div class="timing-sub">P0 + P1 across all TP labels</div>
+      <div class="timing-link">View in Jira &#8599;</div>
     </a>
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20labels%20in%20(ds-2.0-TP)%20AND%20created%20%3E%3D%202026-04-26" target="_blank" class="rag-card blue" style="text-decoration:none">
-      <div class="rag-label">Bugs Filed This Week</div>
-      <div class="rag-num">35</div>
-      <div class="rag-sub">New bugs created since Apr 26</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20statusCategory%20%3D%20%22To%20Do%22%20AND%20status%20!%3D%20%22Ready%20For%20Dev%22" target="_blank" class="timing-card t-red">
+      <div class="timing-label">Open</div>
+      <div class="timing-num">28</div>
+      <div class="timing-sub">19% &middot; To Do / Not Started</div>
+      <div class="timing-link">View in Jira &#8599;</div>
+    </a>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20(statusCategory%20%3D%20%22In%20Progress%22%20OR%20status%20%3D%20%22Ready%20For%20Dev%22)" target="_blank" class="timing-card t-amber">
+      <div class="timing-label">In Progress</div>
+      <div class="timing-num">26</div>
+      <div class="timing-sub">17% &middot; Actively being worked</div>
+      <div class="timing-link">View in Jira &#8599;</div>
+    </a>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20status%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)" target="_blank" class="timing-card t-green">
+      <div class="timing-label">Closed</div>
+      <div class="timing-num">96</div>
+      <div class="timing-sub">64% &middot; Done / Resolved</div>
+      <div class="timing-link">View in Jira &#8599;</div>
     </a>
   </div>
 
-  <!-- Overall Release Status — P0/P1 Bugs by Product Area -->
-  <div class="sec-hdr">Overall Release Status — P0/P1 Bugs by Product Area</div>
-  <div class="team-grid">
+  <!-- ═══ PIT WALL: Hackathon Week ═══ -->
+  <div class="sec-hdr">Pit Stop Report &mdash; Hackathon Week (since Apr 26) <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20resolved%20%3E%3D%202026-04-26" target="_blank">View in Jira &#8599;</a></div>
+  <div class="pit-row">
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20resolved%20%3E%3D%202026-04-26" target="_blank" class="timing-card t-green">
+      <div class="timing-label">Bugs Resolved</div>
+      <div class="timing-num">16</div>
+      <div class="timing-sub">Closed / Resolved since Apr 26</div>
+      <div class="timing-link">View in Jira &#8599;</div>
+    </a>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20labels%20in%20(ds-2.0-TP)%20AND%20created%20%3E%3D%202026-04-26" target="_blank" class="timing-card t-blue">
+      <div class="timing-label">Bugs Filed</div>
+      <div class="timing-num">35</div>
+      <div class="timing-sub">New bugs created since Apr 26</div>
+      <div class="timing-link">View in Jira &#8599;</div>
+    </a>
+  </div>
 
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20in%20(%22CCC%20Cloudera%20Cloud%20Core%22%2C%20%22CCF%20Cloudera%20Cloud%20Factory%22)" target="_blank" class="team-card rag-GREEN" style="text-decoration:none;color:inherit">
-      <div class="team-name">Taikun</div>
-      <div class="team-num">0</div>
-      <div class="team-sub">0 open · 0 in progress</div>
-      <div class="rag-link">View in Jira ↗</div>
+  <!-- ═══ CONSTRUCTOR STANDINGS ═══ -->
+  <div class="sec-hdr">Constructor Standings &mdash; P0/P1 Bugs by Team</div>
+  <div class="constructor-grid">
+
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20in%20(%22CCC%20Cloudera%20Cloud%20Core%22%2C%20%22CCF%20Cloudera%20Cloud%20Factory%22)" target="_blank" class="constructor-card rag-GREEN">
+      <div class="constructor-bar"></div>
+      <div class="constructor-body">
+        <div class="constructor-pos">Taikun</div>
+        <div class="constructor-num">0</div>
+        <div class="constructor-sub">0 open &middot; 0 in progress</div>
+        <div class="constructor-link">View in Jira &#8599;</div>
+      </div>
     </a>
 
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20in%20(%22Anywhere%20Cloud%22)" target="_blank" class="team-card rag-RED" style="text-decoration:none;color:inherit">
-      <div class="team-name">AWC</div>
-      <div class="team-num">23</div>
-      <div class="team-sub">7 open · 16 in progress</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20in%20(%22Anywhere%20Cloud%22)" target="_blank" class="constructor-card rag-RED">
+      <div class="constructor-bar"></div>
+      <div class="constructor-body">
+        <div class="constructor-pos">AWC</div>
+        <div class="constructor-num">23</div>
+        <div class="constructor-sub">7 open &middot; 16 in progress</div>
+        <div class="constructor-link">View in Jira &#8599;</div>
+      </div>
     </a>
 
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Compute%20Platform%22" target="_blank" class="team-card rag-AMBER" style="text-decoration:none;color:inherit">
-      <div class="team-name">DSP</div>
-      <div class="team-num">2</div>
-      <div class="team-sub">2 open · 0 in progress</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Compute%20Platform%22" target="_blank" class="constructor-card rag-AMBER">
+      <div class="constructor-bar"></div>
+      <div class="constructor-body">
+        <div class="constructor-pos">DSP</div>
+        <div class="constructor-num">2</div>
+        <div class="constructor-sub">2 open &middot; 0 in progress</div>
+        <div class="constructor-link">View in Jira &#8599;</div>
+      </div>
     </a>
 
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Cloudera%20AI%2FML%22%20AND%20component%20in%20(%22Workbench%20Administration%22%2C%20%22Workbench%20AMPs%22%2C%20%22Workbench%20API%22%2C%20%22Workbench%20Applications%22%2C%20%22Workbench%20CLI%22%2C%20%22Workbench%20CML%20Extensions%22%2C%20%22Workbench%20Copilot%22%2C%20%22Workbench%20CVE%22%2C%20%22Workbench%20Data%20Exploration%22%2C%20%22Workbench%20Editors%22%2C%20%22Workbench%20Experiments%22%2C%20%22Workbench%20Jobs%22%2C%20%22Workbench%20Learning%20Hub%22%2C%20%22Workbench%20Models%20(legacy)%22%2C%20%22Workbench%20Projects%22%2C%20%22AI%20Workbench%20%22%2C%20%22Workbench%20Spark%22%2C%20%22Workbench%20UI%22%2C%20%22Workbench%20Runtimes%22%2C%20%22Workbench%20Runtime%20Addons%22%2C%20%22PvC%20-%20Workbench%22%2C%20%22PvC%22)" target="_blank" class="team-card rag-RED" style="text-decoration:none;color:inherit">
-      <div class="team-name">CAIW</div>
-      <div class="team-num">18</div>
-      <div class="team-sub">12 open · 6 in progress</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Cloudera%20AI%2FML%22%20AND%20component%20in%20(%22Workbench%20Administration%22%2C%20%22Workbench%20AMPs%22%2C%20%22Workbench%20API%22%2C%20%22Workbench%20Applications%22%2C%20%22Workbench%20CLI%22%2C%20%22Workbench%20CML%20Extensions%22%2C%20%22Workbench%20Copilot%22%2C%20%22Workbench%20CVE%22%2C%20%22Workbench%20Data%20Exploration%22%2C%20%22Workbench%20Editors%22%2C%20%22Workbench%20Experiments%22%2C%20%22Workbench%20Jobs%22%2C%20%22Workbench%20Learning%20Hub%22%2C%20%22Workbench%20Models%20(legacy)%22%2C%20%22Workbench%20Projects%22%2C%20%22AI%20Workbench%20%22%2C%20%22Workbench%20Spark%22%2C%20%22Workbench%20UI%22%2C%20%22Workbench%20Runtimes%22%2C%20%22Workbench%20Runtime%20Addons%22%2C%20%22PvC%20-%20Workbench%22%2C%20%22PvC%22)" target="_blank" class="constructor-card rag-RED">
+      <div class="constructor-bar"></div>
+      <div class="constructor-body">
+        <div class="constructor-pos">CAIW</div>
+        <div class="constructor-num">18</div>
+        <div class="constructor-sub">12 open &middot; 6 in progress</div>
+        <div class="constructor-link">View in Jira &#8599;</div>
+      </div>
     </a>
 
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Cloudera%20AI%2FML%22%20AND%20component%20in%20(Inference%2C%20Registry%2C%20%22PvC%20-%20Registry%22%2C%20%22PvC%20-%20Inference%22)" target="_blank" class="team-card rag-AMBER" style="text-decoration:none;color:inherit">
-      <div class="team-name">CAII</div>
-      <div class="team-num">1</div>
-      <div class="team-sub">1 open · 0 in progress</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Cloudera%20AI%2FML%22%20AND%20component%20in%20(Inference%2C%20Registry%2C%20%22PvC%20-%20Registry%22%2C%20%22PvC%20-%20Inference%22)" target="_blank" class="constructor-card rag-AMBER">
+      <div class="constructor-bar"></div>
+      <div class="constructor-body">
+        <div class="constructor-pos">CAII</div>
+        <div class="constructor-num">1</div>
+        <div class="constructor-sub">1 open &middot; 0 in progress</div>
+        <div class="constructor-link">View in Jira &#8599;</div>
+      </div>
     </a>
 
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20in%20(%22Cloudera%20Data%20Flow%20for%20DS%202.0%22%2C%20%22CSA%20(Flink)%20Data%20Service%22%2C%20%22CSM%20(Kafka)%20Data%20Service%22)" target="_blank" class="team-card rag-AMBER" style="text-decoration:none;color:inherit">
-      <div class="team-name">DIM</div>
-      <div class="team-num">1</div>
-      <div class="team-sub">0 open · 1 in progress</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20in%20(%22Cloudera%20Data%20Flow%20for%20DS%202.0%22%2C%20%22CSA%20(Flink)%20Data%20Service%22%2C%20%22CSM%20(Kafka)%20Data%20Service%22)" target="_blank" class="constructor-card rag-AMBER">
+      <div class="constructor-bar"></div>
+      <div class="constructor-body">
+        <div class="constructor-pos">DIM</div>
+        <div class="constructor-num">1</div>
+        <div class="constructor-sub">0 open &middot; 1 in progress</div>
+        <div class="constructor-link">View in Jira &#8599;</div>
+      </div>
     </a>
 
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Data%20Engineering%20Experience%22" target="_blank" class="team-card rag-AMBER" style="text-decoration:none;color:inherit">
-      <div class="team-name">CDE</div>
-      <div class="team-num">4</div>
-      <div class="team-sub">2 open · 2 in progress</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Data%20Engineering%20Experience%22" target="_blank" class="constructor-card rag-AMBER">
+      <div class="constructor-bar"></div>
+      <div class="constructor-body">
+        <div class="constructor-pos">CDE</div>
+        <div class="constructor-num">4</div>
+        <div class="constructor-sub">2 open &middot; 2 in progress</div>
+        <div class="constructor-link">View in Jira &#8599;</div>
+      </div>
     </a>
 
-    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Airflow%20at%20Cloudera%22" target="_blank" class="team-card rag-AMBER" style="text-decoration:none;color:inherit">
-      <div class="team-name">CWO</div>
-      <div class="team-num">2</div>
-      <div class="team-sub">1 open · 1 in progress</div>
-      <div class="rag-link">View in Jira ↗</div>
+    <a href="https://cloudera.atlassian.net/issues/?jql=labels%20in%20(ds-2.0-TP%2C%20ds-2.0-cai-TP%2C%20ds-2.0-cde-TP%2C%20ds-2.0-cdf-TP-ee%2C%20ds-2.0-csm-TP%2C%20ds-2.0-csa-TP%2C%20ds-2.0-cdw-TP%2C%20ds-2.0-cdv-TP%2C%20ds-2.0-awc-TP%2C%20ds-2.0-taikun-TP%2C%20ds-2.0-airflow-TP%2C%20ds-2.0-ux-TP%2C%20ds-2.0-qe-TP%2C%20ds-2.0-doc-TP)%20AND%20issuetype%20in%20(Bug)%20AND%20status%20not%20in%20(Closed%2C%20Resolved%2C%20Done%2C%20%22Ready%20for%20Release%22%2C%20%22Release%20Candidate%20Test%22)%20AND%20priority%20in%20(%22P0%20-%20Immediate%22%2C%20%22P1%20-%20Must%20Do%22%2C%20%22Immediate%22%2C%20%22Must%20Do%22)%20AND%20project%20%3D%20%22Airflow%20at%20Cloudera%22" target="_blank" class="constructor-card rag-AMBER">
+      <div class="constructor-bar"></div>
+      <div class="constructor-body">
+        <div class="constructor-pos">CWO</div>
+        <div class="constructor-num">2</div>
+        <div class="constructor-sub">1 open &middot; 1 in progress</div>
+        <div class="constructor-link">View in Jira &#8599;</div>
+      </div>
     </a>
 
   </div>
-
 
   </div><!-- /page-inner -->
 
-  <div class="footer">
-    DS 2.0 Tech Preview — Overall Release Dashboard · Data from Jira · Refreshes every 60s
-    &nbsp;|&nbsp; <a href="https://cloudera.atlassian.net/wiki/x/C4D8wQI" target="_blank" style="color:var(--cyan);text-decoration:none">View Confluence page →</a>
-    &nbsp;|&nbsp; <a href="https://cloudera.atlassian.net/jira/dashboards/16920" target="_blank" style="color:var(--cyan);text-decoration:none">Jira Dashboard →</a>
+  <div class="checkered-div"></div>
+  <div class="f1-footer">
+    DS 2.0 Tech Preview &mdash; Race Control Dashboard &middot; Data from Jira &middot; Auto-refresh 60s
+    &nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://cloudera.atlassian.net/wiki/x/C4D8wQI" target="_blank">Confluence &rarr;</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://cloudera.atlassian.net/jira/dashboards/16920" target="_blank">Jira Dashboard &rarr;</a>
   </div>
 
 </div>
 
 <script>
-// Days to launch
 const release = new Date('2026-04-30T23:59:59');
 const diffMs = release - new Date();
 const days = Math.max(0, Math.round(diffMs / 86400000));
 const el = document.getElementById('daysLeft');
-if (el) { el.textContent = days; if (days <= 3) el.style.color = 'var(--red)'; }
+if (el) { el.textContent = days; if (days <= 3) el.style.textShadow = '0 0 60px rgba(225,6,0,0.8)'; }
 const remaining = document.getElementById('daysRemaining');
 if (remaining) remaining.textContent = days + ' days remaining';
 
-// Timestamp
 const now = new Date();
 document.getElementById('ts-date').textContent = now.toLocaleDateString('en-US', {weekday:'long',month:'long',day:'numeric',year:'numeric'});
 document.getElementById('ts-time').textContent = now.toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'});
 
-// F1 Race track — DS 2.0 TP P0/P1 Bug completion 81/126
+// F1 Starting lights sequence
+const lights = document.querySelectorAll('.f1-light');
+const litCount = Math.min(5, Math.max(0, 5 - days));
+function animateLights() {
+  lights.forEach((l, i) => {
+    setTimeout(() => {
+      if (i < litCount) l.classList.add('on');
+    }, i * 300);
+  });
+  if (days <= 0) {
+    setTimeout(() => {
+      lights.forEach(l => { l.classList.remove('on'); l.classList.add('go'); });
+    }, litCount * 300 + 600);
+  }
+}
+setTimeout(animateLights, 800);
+
+// Race track
 const DONE = 96, TOTAL = 150;
 const pct = Math.round(DONE / TOTAL * 100);
-// Track road runs from left:24px to right:36px within the container
-// Car travels within that range as a percentage
 const trackStart = 2, trackEnd = 88;
 const carPos = trackStart + (pct / 100) * (trackEnd - trackStart);
-
 document.getElementById('trackDone').textContent = DONE;
 document.getElementById('trackTotal').textContent = TOTAL;
+document.getElementById('trackPct').textContent = pct + '%';
 
 setTimeout(() => {
   const fill = document.getElementById('trackFill');
   const car = document.getElementById('f1car');
   if (fill) fill.style.width = pct + '%';
   if (car) car.style.left = carPos + '%';
-}, 400);
+}, 500);
 
-// Exhaust flicker animation
+// Exhaust flicker
 setInterval(() => {
   const car = document.getElementById('f1car');
   if (!car) return;
-  const ellipses = car.querySelectorAll('ellipse');
-  ellipses.forEach(e => {
-    e.style.opacity = (0.5 + Math.random() * 0.5).toFixed(2);
+  car.querySelectorAll('ellipse').forEach(e => {
+    e.style.opacity = (0.4 + Math.random() * 0.6).toFixed(2);
   });
-}, 120);
+}, 100);
 
 // Countdown
 let cd = 60;
